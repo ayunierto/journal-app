@@ -1,6 +1,7 @@
 import { LogoutOutlined, MenuOutlined } from "@mui/icons-material"
 import { AppBar, Grid, IconButton, Toolbar, Typography } from "@mui/material"
 
+// eslint-disable-next-line react/prop-types
 export const NavBar = ({ drawerWidth }) => {
   return (
     <AppBar
