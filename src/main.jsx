@@ -5,9 +5,10 @@ import { JournalApp } from './JournalApp.jsx'
 import { BrowserRouter } from 'react-router-dom'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <JournalApp />
-    </BrowserRouter>
-  </React.StrictMode>,
-)
+    <React.StrictMode>
+        <BrowserRouter>
+            <JournalApp />
+        </BrowserRouter>
+    </React.StrictMode>,
+    )
+    
