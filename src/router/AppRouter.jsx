@@ -1,16 +1,25 @@
 import { Route, Routes } from "react-router-dom"
 import { AuthRoutes } from "../auth/routes/AuthRoutes"
 import { JournalRoutes } from "../journal/routes/JournalRoutes"
+import { useSelector } from "react-redux"
+import { CheckingAuth } from "../ui/components/CheckingAuth"
 
 export const AppRouter = () => {
-  return (
-    <Routes>
 
-        {/* Login and Register */}
-        <Route path="/auth/*" element={ <AuthRoutes /> } />
+    const { status } = useSelector( state => state.auth )
 
-        {/* JournalApp */}
-        <Route path="/*" element={ <JournalRoutes /> } />
-    </Routes>
-  )
+    if (status === 'checking') {
+        return <CheckingAuth />
+    }
+
+    return (
+        <Routes>
+
+            {/* Login and Register */}
+            <Route path="/auth/*" element={ <AuthRoutes /> } />
+
+            {/* JournalApp */}
+            <Route path="/*" element={ <JournalRoutes /> } />
+        </Routes>
+    )
 }
