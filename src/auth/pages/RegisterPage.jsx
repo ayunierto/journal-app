@@ -3,18 +3,20 @@ import { Link as RouterLink } from 'react-router-dom'
 import { AuthLayout } from "../layout/AuthLayout"
 import { useForm } from "../../hooks"
 import { useState } from "react"
-
-const formData = {
-    email: '',
-    password: '',
-    dispalyName: ''
-}
+import { useDispatch } from "react-redux"
+import { startCreatingUserWithEmailAndPassword } from "../../store/auth/thunks"
 
 // const formData = {
-//     email: 'jhon-doe.a@gmail.com',
-//     password: '123456',
-//     dispalyName: 'Jhon Doe'
+//     email: '',
+//     password: '',
+//     dispalyName: ''
 // }
+
+const formData = {
+    email: 'jhon-doe.a@gmail.com',
+    password: '123456',
+    dispalyName: 'Jhon Doe'
+}
 
 const formValidations = {
     email: [ ( value ) => value.includes('@'), 'The email must contain an @' ],
@@ -31,12 +33,12 @@ export const RegisterPage = () => {
 
     const [formSubmitted, setFormSubmitted] = useState(false)
 
-
+    const dispatch = useDispatch()
 
     const onSubmit = ( event ) => {
         event.preventDefault()
         setFormSubmitted(true)
-        console.log( formState )
+        dispatch( startCreatingUserWithEmailAndPassword(formState) )
     }
 
     return (
