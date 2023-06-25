@@ -17,7 +17,7 @@ export const startGoogleSignIn = ( ) => {
         const result = await signInWithGoogle()
 
         if (!result.ok) {
-            return dispatch( logout )
+            return dispatch( logout( result.errorMessage ) )
         }
 
         dispatch( login( result ) )
