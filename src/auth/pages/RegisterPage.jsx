@@ -9,26 +9,26 @@ import { startCreatingUserWithEmailAndPassword } from "../../store/auth/thunks"
 // const formData = {
 //     email: '',
 //     password: '',
-//     dispalyName: ''
+//     displayName: ''
 // }
 
 const formData = {
-    email: 'jhon-doe.a@gmail.com',
+    email: 'jhon.doe@gmail.com',
     password: '123456',
-    dispalyName: 'Jhon Doe'
+    displayName: 'Jhon Doe'
 }
 
 const formValidations = {
     email: [ ( value ) => value.includes('@'), 'The email must contain an @' ],
     password: [ ( value ) => value.length >= 6, 'Password must contain at least 6 characters.' ],
-    dispalyName: [ ( value ) => value.length >= 1, 'The name is required.' ],
+    displayName: [ ( value ) => value.length >= 1, 'The name is required.' ],
 }
 
 export const RegisterPage = () => {
 
     const { 
-        formState, dispalyName, email, password, onInputChange,  
-        isFormValid, dispalyNameValid, emailValid, passwordValid
+        formState, displayName, email, password, onInputChange,  
+        isFormValid, displayNameValid, emailValid, passwordValid
     } = useForm( formData, formValidations )
 
     const [formSubmitted, setFormSubmitted] = useState(false)
@@ -52,11 +52,11 @@ export const RegisterPage = () => {
                             type="text"
                             placeholder="Jhon Doe"
                             fullWidth
-                            name="dispalyName"
+                            name="displayName"
                             onChange={ onInputChange }
-                            value={ dispalyName }
-                            error={ !!dispalyNameValid && formSubmitted }
-                            helperText={ dispalyNameValid }
+                            value={ displayName }
+                            error={ !!displayNameValid && formSubmitted }
+                            helperText={ displayNameValid }
                         />
                     </Grid>  
 
