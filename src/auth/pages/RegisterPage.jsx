@@ -13,9 +13,9 @@ import { startCreatingUserWithEmailAndPassword } from "../../store/auth/thunks"
 // }
 
 const formData = {
-    email: 'jhon.doe@gmail.com',
-    password: '123456',
-    displayName: 'Jhon Doe'
+    email: '',
+    password: '',
+    displayName: ''
 }
 
 const formValidations = {
@@ -46,8 +46,10 @@ export const RegisterPage = () => {
 
     return (
         <AuthLayout title="Register">
-            <h1>{ isFormValid ? "valid" : 'error' }</h1>
-            <form onSubmit={ onSubmit }>
+            <form 
+                onSubmit={ onSubmit } 
+                className="animate__animated animate__fadeIn animate__faster"
+            >
                 <Grid container>
                     <Grid item xs={ 12  } sx={{ mb: 2, mt: 2 }}>
                         <TextField
