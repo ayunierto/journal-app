@@ -6,7 +6,7 @@ import { CheckingAuth } from "../ui/components/CheckingAuth"
 
 export const AppRouter = () => {
 
-    const { status } = useCheckAuth
+    const status = useCheckAuth()
 
     if (status === 'checking') {
         return <CheckingAuth />
@@ -16,9 +16,9 @@ export const AppRouter = () => {
         <Routes>
 
             {
-                (status === 'authenticate')
-                ? <Route path="/auth/*" element={ <AuthRoutes /> } />
-                : <Route path="/*" element={ <JournalRoutes /> } />
+                (status === 'authenticated')
+                ? <Route path="/*" element={ <JournalRoutes /> } />
+                : <Route path="/auth/*" element={ <AuthRoutes /> } />
             }
 
             <Route path="/*" element={ <Navigate to="/auth/login" /> } />
