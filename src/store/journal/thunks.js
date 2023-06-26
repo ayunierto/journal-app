@@ -11,7 +11,7 @@ export const startNewNote = () => {
         const { uid } = getState().auth
 
         const newNote = {
-            title: '',
+            title: 'Note a' ,
             body: '',
             date: new Date().getTime(),
         }
