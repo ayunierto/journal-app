@@ -1,7 +1,7 @@
-import { useEffect, useMemo } from "react"
+import { useEffect, useMemo, useRef } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { SaveOutlined } from "@mui/icons-material"
-import { Button, Grid, TextField, Typography } from "@mui/material"
+import { SaveOutlined, UploadFileOutlined } from "@mui/icons-material"
+import { Button, Grid, IconButton, TextField, Typography } from "@mui/material"
 import { ImageGalery } from "../components"
 import { useForm } from "../../hooks"
 import { setActiveNote } from "../../store/journal/journalSlice"
@@ -26,6 +26,8 @@ export const NoteView = () => {
         dispatch(setActiveNote(formState))
     }, [ formState ])
 
+    const fileInputRef = useRef()
+
     const onSaveNote = () => {
         dispatch( startSaveNote() )
     }
@@ -35,6 +37,11 @@ export const NoteView = () => {
             Swal.fire( 'Updated', messageSave, 'success' )
         }
     }, [ messageSave ])
+
+    const onFileInputChange = ( { target} ) => {
+        if ( target.files === 0) return
+
+    }
 
     return (
         <Grid
@@ -49,6 +56,23 @@ export const NoteView = () => {
             </Grid>
 
             <Grid item>
+
+                <input 
+                    onChange={ onFileInputChange }
+                    type="file" 
+                    multiple 
+                    ref={ fileInputRef }
+                    style={{ display: 'none' }}
+                />
+
+                <IconButton
+                    color="primary"
+                    disabled={ isSaving }
+                    onClick={ () => fileInputRef.current.click() }
+                >
+                    <UploadFileOutlined />
+                </IconButton>
+
                 <Button 
                     disabled={ isSaving }
                     onClick={ onSaveNote }
