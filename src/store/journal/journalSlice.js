@@ -25,6 +25,7 @@ export const journalSlice = createSlice({
         },
         setActiveNote: (state, action ) => {
             state.active = action.payload
+            state.messageSave = ''
         },
         setNotes: (state, action ) => {
             state.notes = action.payload
@@ -44,7 +45,7 @@ export const journalSlice = createSlice({
                 return note
             })
 
-            // todo: mostrar mensaje de actualizacion
+            state.messageSave = `${ action.payload.title }, updated!`
         },
         deleteNoteById: (state, action ) => {
             
