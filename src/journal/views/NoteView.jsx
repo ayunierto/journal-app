@@ -5,7 +5,7 @@ import { Button, Grid, IconButton, TextField, Typography } from "@mui/material"
 import { ImageGalery } from "../components"
 import { useForm } from "../../hooks"
 import { setActiveNote } from "../../store/journal/journalSlice"
-import { startSaveNote } from "../../store/journal/thunks"
+import { startLoadingFiles, startSaveNote } from "../../store/journal/thunks"
 import Swal from "sweetalert2"
 import 'sweetalert2/dist/sweetalert2.css'
 
@@ -40,7 +40,7 @@ export const NoteView = () => {
 
     const onFileInputChange = ( { target} ) => {
         if ( target.files === 0) return
-
+        dispatch( startLoadingFiles(target.files ) )
     }
 
     return (
